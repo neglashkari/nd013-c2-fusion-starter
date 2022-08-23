@@ -27,16 +27,31 @@ Two snapshots of obtained result are shown below showing different states of a t
 Root Mean Square Error (RMSE) is shown below for the confirmed track:
 ![Step2_RMSE](https://user-images.githubusercontent.com/109758200/186170576-55ba03e4-917a-4664-afa7-852a56f4b22e.PNG)
 
+Also, a snapshot of the console output is shown below which confirms updating track scores leading a tentative track into a confirmed track state:
+![Step2_tracking_snapshot](https://user-images.githubusercontent.com/109758200/186185214-fa865166-5e8b-4f2b-a77a-08f96dbd388c.PNG)
+
+
 ## Step 3: Implement single nearest neighbour data association and gating.
+In this step, for associating measurements to track, data association is implemented via single nearest neighbor. The code is implemented in `association.py` via the following steps:
+- Association matrix is intialized;
+- Mahalanobis Distance between all tracks and measurements are calculated;
+- Gating is performed to identify if a measurement lies inside our outside a track gate;
+- Association matrix is updated.
+
+Different snapshots of obtained results are shown below:
 ![Step3_association_2](https://user-images.githubusercontent.com/109758200/186170687-46083032-6b3b-4302-a0fa-df9c6ebd6003.PNG)
 ![Step3_association_3](https://user-images.githubusercontent.com/109758200/186170700-599948ac-8bb3-44f8-8950-8a8f505e0c48.PNG)
 ![Step3_association_5](https://user-images.githubusercontent.com/109758200/186170803-a039d69a-c3ca-4628-a24f-6d8d99cca49c.PNG)
 ![Step3_association_6](https://user-images.githubusercontent.com/109758200/186170814-d6307ad4-0219-4845-a32c-936a194f3b98.PNG)
-![Step3_association_8](https://user-images.githubusercontent.com/109758200/186170851-782df277-6e99-48a7-a35d-603a360c513e.PNG)
+
+RMSE for confirmed tracks are shown below:
 ![Step3_RMSE](https://user-images.githubusercontent.com/109758200/186170859-ca03bc11-b776-4b20-ab4f-f1b00554397c.PNG)
 
 
 ## Step 4: Apply sensor fusion by implementing the nonlinear camera measurement model and a sensor visibility check.
+In this step, nonlinear camera measurement model and then camera-lidar sensor fusion is implemented in `measurements.py`. Below steps are implemented:
+- checking if the input state vector x of an object can be seen by Camera;
+- calculating camera measurements
 ![Step4_meas_3](https://user-images.githubusercontent.com/109758200/186170962-e853ace1-21bf-43ad-aae6-05b46bfd2f42.PNG)
 ![Step4_meas_4](https://user-images.githubusercontent.com/109758200/186170997-3b8f3ab2-7c47-4c11-8d00-40577fb49228.PNG)
 ![Step4_RMSE](https://user-images.githubusercontent.com/109758200/186171072-77c805ad-20c2-4c79-8141-e277d12d2652.PNG)
