@@ -44,20 +44,40 @@ Different snapshots of obtained results are shown below:
 ![Step3_association_5](https://user-images.githubusercontent.com/109758200/186170803-a039d69a-c3ca-4628-a24f-6d8d99cca49c.PNG)
 ![Step3_association_6](https://user-images.githubusercontent.com/109758200/186170814-d6307ad4-0219-4845-a32c-936a194f3b98.PNG)
 
-RMSE for confirmed tracks are shown below:
+RMSE for confirmed tracks are shown below obtained via `only lidar measurements`:
 ![Step3_RMSE](https://user-images.githubusercontent.com/109758200/186170859-ca03bc11-b776-4b20-ab4f-f1b00554397c.PNG)
 
 
 ## Step 4: Apply sensor fusion by implementing the nonlinear camera measurement model and a sensor visibility check.
 In this step, nonlinear camera measurement model and then camera-lidar sensor fusion is implemented in `measurements.py`. Below steps are implemented:
 - checking if the input state vector x of an object can be seen by Camera;
-- calculating camera measurements
+- calculating camera measurements via EKF (nonlnear camera measurement function h and jacoban H).
+
+Two snapshots of obtained result are shown below showing two confimed tracks between 0-10 seconds and three confirmed tracks after 10 seconds:
 ![Step4_meas_3](https://user-images.githubusercontent.com/109758200/186170962-e853ace1-21bf-43ad-aae6-05b46bfd2f42.PNG)
 ![Step4_meas_4](https://user-images.githubusercontent.com/109758200/186170997-3b8f3ab2-7c47-4c11-8d00-40577fb49228.PNG)
+
+RMSE for confirmed tracks are shown below obtained via `camera-lidar fusion`:
 ![Step4_RMSE](https://user-images.githubusercontent.com/109758200/186171072-77c805ad-20c2-4c79-8141-e277d12d2652.PNG)
+
+A snapshot of the console output is shown below for the last frame:
+
+![image](https://user-images.githubusercontent.com/109758200/186194657-ac80b7e1-fa45-4c2a-96a9-493b753d7410.png)
+
+Also, the complete final result is captured as `.avi` file shown below:
+
+![my_tracking_results](https://user-images.githubusercontent.com/109758200/186197314-78196e2f-9e32-4a97-b298-197d499e16cc.gif)
 
 
 #### Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)?
+In theory, camera-Lidar fusion approach can lead to more accurate position and 3D bounding box sizes. The reason is combining Lidar's high resolution positio information with Camera's pixel position of object and classification which enhances object tracking performance.
+In experiment, by comparing RMSE depicted in step 3 and 4, its obvious that mean of RMSE obtained via camera-Lidar fusion is reduced for most of confirmed tracks (2 out of 3) compared to Lidar measurements only.
+
 #### Which challenges will a sensor fusion system face in real-life scenarios?
+In busier and more complicated environment, the sensor fusion and tracking may get more challenging. Adverse weather conditions can degrde sensors which may result in degraded performance in sensor tracking. As the number of sensors increases (more Lidars and more cameras), computations may get heavier for coardinate transformation ad time synchronization.
+
 #### Did you see any of these challenges in the project?
+In busier envrironment, there were some confusions in detecting objects and assiging proper track state to them.
+
 #### Can you think of ways to improve your tracking results in the future?
+Using `Probablistic Data Association` or `Global Nearest Neighbor` for data association (instead of simple single nearest neighbor) can improve tracking results. Another solution will be improving precision of process noise Q, measurement noise R, initial setting for estimation error covariance P.
