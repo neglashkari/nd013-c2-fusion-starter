@@ -64,7 +64,7 @@ A snapshot of the console output is shown below for the last frame:
 
 ![image](https://user-images.githubusercontent.com/109758200/186194657-ac80b7e1-fa45-4c2a-96a9-493b753d7410.png)
 
-Also, the complete final result is captured as `.avi` file shown below:
+Also, the complete tracking result via camera-Lidar fusion is converted to `.gif` (from `.avi` for the sake of file size), which is shown below:
 
 ![my_tracking_results](https://user-images.githubusercontent.com/109758200/186197314-78196e2f-9e32-4a97-b298-197d499e16cc.gif)
 
