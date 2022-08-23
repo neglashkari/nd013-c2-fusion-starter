@@ -18,7 +18,13 @@ In this step, we perform track management and the code is implemented in `trackm
 - **track score:** calculating score based on measurements corrolation;
 - **track state:** assigning a track state (initialized, tentative, confirmed) based on calculated track score;
 - **track deletion:** removing the track if its score is below a threshold or error covariance P is too large.
+
+Two snapshots of obtained result are shown below showing different states of a track, i.e., tentative and confirmed:
+![Step2_tracking_2](https://user-images.githubusercontent.com/109758200/186183831-8b460e49-616a-43fa-8ad7-34b92fc33c17.PNG)
+
 ![Step2_tracking](https://user-images.githubusercontent.com/109758200/186170561-0b78961d-2d76-43bd-b900-b9fbf21c9809.PNG)
+
+Root Mean Square Error (RMSE) is shown below for the confirmed track:
 ![Step2_RMSE](https://user-images.githubusercontent.com/109758200/186170576-55ba03e4-917a-4664-afa7-852a56f4b22e.PNG)
 
 ## Step 3: Implement single nearest neighbour data association and gating.
